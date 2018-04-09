@@ -12,7 +12,9 @@ You can use docker to create a wheel for heroku build-16 as follows:
 1. Install and run docker.
 1. Run a docker shell with image heroku build-16:
 
+    ```
     docker run --rm -it heroku/heroku:16-build bash
+    ```
 
 1. In the docker shell, install python and icu packages as needed (you may need to add repositories):
 
