@@ -21,6 +21,7 @@ You can use docker to create a wheel for heroku build-16 as follows:
     1. E.g. for python 3.6
 
         ```
+        apt-get update
         apt-get install software-properties-common
         add-apt-repository ppa:jonathonf/python-3.6
         apt-get update
