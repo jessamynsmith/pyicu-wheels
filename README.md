@@ -7,9 +7,12 @@ PyICU cannot be installed without flags set, so it's easiest to install it from 
 If you need a wheel for a different version of PyICU, you can generate it yourself (pull requests welcome!).
 
 Wheels must be generated on the same operating system as the server where they will be installed.
-You can use docker to create a wheel for heroku build-16 as follows:
+
+You can use docker to create a wheel for as follows:
 
 1. Install and run docker.
+
+For heroku build-16:
 1. Run a docker shell with image heroku build-16:
 
     ```
@@ -22,40 +25,53 @@ You can use docker to create a wheel for heroku build-16 as follows:
 
         ```
         apt-get update
-        apt-get install software-properties-common
+        apt-get install software-properties-common # maybe 3.6 is here by default now?
         add-apt-repository ppa:jonathonf/python-3.6
         apt-get update
         apt-get install python3.6 python3.6-dev python3.6-venv
         ```
 
-    1. Get ICU development package
+For heroku build-18:
+
+1. Install and run docker.
+1. Run a docker shell with image heroku build-18:
+
+    ```
+    docker run --rm -it heroku/heroku:18-build bash
+    ```
+
+1. In the docker shell, install python and icu packages as needed (you may need to add repositories):
+
+    1. E.g. for python 3.6
 
         ```
-        apt-get install libicu-dev
+        apt-get install python3-dev python3-venv
         ```
 
-    1. Create a virtualenv and activate it
+Once machine is set up for heroku-16 or heroku-18:
 
-        ```
-        /usr/bin/python3.6 -m venv pyicu-env
-        . pyicu-env/bin/activate
-        pip install -U pip
-        ```
+1. Create a virtualenv and activate it
 
-    1. With the virtualenv active, install dependencies, e.g. for pyicu 1.9.8:
+    ```
+    /usr/bin/python3.6 -m venv pyicu-env
+    . pyicu-env/bin/activate
+    pip install -U pip
+    ```
 
-        ```
-        pip install wheel
-        pip install pyicu
-        ```
+1. With the virtualenv active, install dependencies, e.g. for pyicu 1.9.8:
 
-    1. Generate a wheel (optionally specify a pyicu version)
+    ```
+    pip install wheel
+    pip install pyicu
+    ```
 
-        ```
-        pip wheel pyicu
+1. Generate a wheel (optionally specify a pyicu version)
 
-        pip wheel pyicu==<version_number> # specific version of pyicu
-        ```
+    ```
+    pip wheel pyicu
+
+    pip wheel pyicu==<version_number> # specific version of pyicu
+    ```
 
 
 ## Add wheels to pyicu-wheels
