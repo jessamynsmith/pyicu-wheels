@@ -12,16 +12,20 @@ You can use docker to create a wheel for as follows:
 
 1. Install and run docker.
 
-1. Select a stack to build for (Dockerfiles are provided for heroku16 and heroku18) and build the image, e.g.:
+2. Select a stack to build for (Dockerfiles are provided for heroku16 and heroku18) and build the image, e.g.:
 
+    ```
     cd docker_files/heroku18
     docker build -t heroku18_pyicu .
+    ```
 
-1. Run the image:
+3. Run the image:
 
+    ```
     docker run --rm -it heroku18_pyicu bash
+    ```
 
-1. Generate a wheel (optionally specify a pyicu version)
+4. Generate a wheel (optionally specify a pyicu version)
 
     ```
     /usr/bin/pip3 wheel pyicu
@@ -29,7 +33,7 @@ You can use docker to create a wheel for as follows:
     /usr/bin/pip3 wheel pyicu==<version_number> # specific version of pyicu
     ```
 
-1. If you want to use the wheel without adding it to this repo, copy it from the docker image to your desired destination.
+5. If you want to use the wheel without adding it to this repo, copy it from the docker image to your desired destination.
 
 ## Add wheels to pyicu-wheels
 
@@ -41,7 +45,7 @@ If you'd like to add your generated wheel(s) to this repository, you can submit 
     git remote add fork https://github.com/<username>/pyicu-wheels.git
     ```
 
-1. Add wheels to git:
+2. Add wheels to git:
 
     ```
     git add *.whl
@@ -49,4 +53,4 @@ If you'd like to add your generated wheel(s) to this repository, you can submit 
     git push fork master
     ```
 
-1. On GitHub, create a pull request.
+3. On GitHub, create a pull request.
